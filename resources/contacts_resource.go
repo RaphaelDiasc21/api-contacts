@@ -47,3 +47,11 @@ func (cr *ContactResource) ToModel(client string) (*models.Contact, error) {
 		Celular: cellPhone,
 	}, err
 }
+
+func (cr *ContactResource) ToResource(contact models.Contact) *ContactResource {
+	return &ContactResource{
+		ID: contact.ID,
+		Name: contact.Nome,
+		Cellphone: contact.Celular,
+	}
+}

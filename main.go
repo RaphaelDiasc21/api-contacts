@@ -6,7 +6,15 @@ import (
 	"github.com/gorilla/mux"
 )
 
-
+// @title API Contacts
+// @version 1.0
+// @description This is a sample serice for managing orders
+// @termsOfService http://swagger.io/terms/
+// @contact.name Raphael Dias
+// @contact.email raphaeldiasc16@gmail.com
+// @license.name Apache 2.0
+// @host localhost:8080
+// @BasePath /
 
 func main() {
 	

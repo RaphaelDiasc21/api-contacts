@@ -60,3 +60,59 @@ func (cs *ContactsService) InsertContacts(contactResources *resources.ContactRes
 	cs.contactRepository.InsertContacts(&contacts)
 	return nil
 }
+
+func (cs *ContactsService) FindAll() []resources.ContactResource {
+	contacts := cs.contactRepository.FindAll()
+	var contactResources []resources.ContactResource
+
+	for _,resource := range contacts {
+		contactResource := resources.ContactResource{
+			ID: resource.ID,
+			Name: resource.Nome,
+			Cellphone: resource.Celular,
+		}
+
+		contactResources = append(contactResources,contactResource)
+	}
+
+
+	return contactResources
+}
+
+func (cs *ContactsService) FindById(contactId uint) (contactResource resources.ContactResource,err error) {
+	contact, err := cs.contactRepository.FindById(contactId)
+
+	if err == nil {
+		contactResource = resources.ContactResource{
+			ID: contact.ID,
+			Name: contact.Nome,
+			Cellphone: contact.Celular,
+		}
+	} 
+
+	return
+}
+
+func (cs *ContactsService) Update(contactId uint, client string, contactResource resources.ContactResource) (err error) {
+	contact, modelError := contactResource.ToModel(client)
+
+	if modelError == nil {
+		updateError := cs.contactRepository.Update(contactId,contact)
+
+		if updateError != nil {
+			err = updateError
+		} else {
+			err = nil
+		}
+
+		
+	} else {
+		err = modelError
+	}
+	return
+}
+
+
+func (cs *ContactsService) Delete(contactId uint, client string) (err error) {
+	return cs.contactRepository.Delete(contactId)
+}

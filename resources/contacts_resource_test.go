@@ -57,9 +57,8 @@ func TestMacapaToModelSuccess(t *testing.T) {
 		Cellphone: "5598758621522",
 	}
 
-	contactResources := resources.ContactResources{
-		Contacts: contactResource,
-	}
+	contact,err := contactResource.ToModel("macapa")
 
-	contactResource.ToModel("macapa")
+	assert.Equal(t,err,nil)
+	assert.Equal(t,contact.Celular,"+55 (98) 75862-1522")
 }

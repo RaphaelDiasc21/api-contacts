@@ -9,6 +9,8 @@ services:
     - MYSQL_USER=admin
     - MYSQL_PASSWORD=admin
     - MYSQL_ROOT_HOST=%
+    volumes:
+      - ./create-table-macapa.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - "3306:3306"
     command: --default-authentication-plugin=mysql_native_password
@@ -20,3 +22,13 @@ services:
     environment:
       POSTGRES_PASSWORD: "admin"
       POSTGRES_USER: "admin"
+    volumes:
+      - ./create-table-varejao.sql:/docker-entrypoint-initdb.d/init.sql
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+      - postgresql
+    

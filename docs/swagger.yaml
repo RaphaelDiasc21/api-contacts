@@ -1,0 +1,66 @@
+basePath: /
+host: localhost:8080
+info:
+  contact:
+    email: raphaeldiasc16@gmail.com
+    name: Raphael Dias
+  description: This is a sample serice for managing orders
+  license:
+    name: Apache 2.0
+  termsOfService: http://swagger.io/terms/
+  title: API Contacts
+  version: "1.0"
+paths:
+  /contacts/{client}:
+    get:
+      consumes:
+      - application/json
+      description: Find contacts on database
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+      summary: Find contacts
+    post:
+      consumes:
+      - application/json
+      description: Save contacts on database
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: ""
+      summary: Save contacts
+  /contacts/{client}/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete contact by id on database
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+      summary: Delete contact by id
+    get:
+      consumes:
+      - application/json
+      description: Find contact by id on database
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+      summary: Find contact by id
+    put:
+      consumes:
+      - application/json
+      description: Update contact by id on database
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: ""
+      summary: Update contact by id
+swagger: "2.0"

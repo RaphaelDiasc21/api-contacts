@@ -1,0 +1,126 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is a sample serice for managing orders",
+        "title": "API Contacts",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "name": "Raphael Dias",
+            "email": "raphaeldiasc16@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0"
+        },
+        "version": "1.0"
+    },
+    "host": "localhost:8080",
+    "basePath": "/",
+    "paths": {
+        "/contacts/{client}": {
+            "get": {
+                "description": "Find contacts on database",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Find contacts",
+                "responses": {
+                    "200": {
+                        "description": "An array of contacts",
+                        "schema": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/definitions/ContactResource"
+                          }
+                        }
+                      }
+                    }
+            },
+            "post": {
+                "description": "Save contacts on database",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Save contacts",
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/contacts/{client}/{id}": {
+            "get": {
+                "description": "Find contact by id on database",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Find contact by id",
+                "responses": {
+                    "200": {
+                        "description": "Contact resource information",
+                        "schema": {
+                          "$ref": "#/definitions/ContactResource"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Update contact by id on database",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Update contact by id",
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete contact by id on database",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Delete contact by id",
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "ContactResource": {
+            "properties":{
+                "ID":{
+                    "type":"number",
+                    "description":"Contact id"
+                },
+                "name": {
+                    "type":"string",
+                    "description":"Contact name"
+                },
+                "cellphone":{
+                    "type":"string",
+                    "description":"Contact cellphone"
+                }
+            }
+        }
+    }
+}
